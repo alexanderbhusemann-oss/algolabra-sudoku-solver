@@ -3,26 +3,28 @@
 
 ## 1. Project Overview
 
+
 The goal of this project is to develop a Sudoku solver in Python. The program will take an 
 incomplete 9x9 Sudoku puzzle and attempt to find a valid solution while following the standard Sudoku rules.
-The main focus of the project will be implementing a recursive backtracking algorithm. 
+The main focus of the project will be implementing Algorithm X using the Dancing Links technique to solve Sudoku puzzles represented as exact-cover problems.
 I would also like to investigate possible optimizations and compare their performance with a basic implementation.
 
 This project will help me develop a better understanding of recursion, algorithm design and computational complexity.
 
 ## 2. Algorithms and Data Structures
 
-The Sudoku board will be represented as a two-dimensional Python list containing nine rows and nine columns. 
-Empty cells will be represented by zero.
 
-The main algorithm will use backtracking. It will find an empty cell, 
-try numbers from 1 to 9, and check whether each number follows the Sudoku rules. 
-If a number is valid, the algorithm will continue recursively. 
-If no solution can be found using the current choice, the algorithm will undo that choice and try another number.
+The main algorithm of this project will be Donald Knuth's Algorithm X, implemented using the Dancing Links (DLX) technique.
 
-The validity checks will ensure that a number does not already appear in the same row, column or 3x3 subgrid.
+Sudoku will be represented as an exact-cover problem. Each possible placement of a number in a cell corresponds to a candidate row in an exact-cover matrix. 
+The constraints ensure that each cell receives one number and that every number occurs exactly once in each row, column and 3x3 box.
+Algorithm X will search for a set of candidates satisfying all constraints. Dancing Links will use a circular doubly linked structure to efficiently remove 
+and restore candidates during the search.
 
-As a possible optimization, I plan to investigate choosing the empty cell with the fewest valid candidates first.
+The Sudoku board itself will be represented using a two-dimensional Python list.
+I plan to implement the exact-cover representation and the linked data structure myself.
+I will study the algorithm and its implementation using the relevant literature before beginning the main implementation.
+
 
 ## 3. Input and Output
 
@@ -34,14 +36,16 @@ A graphical user interface is not planned. The focus will be on the algorithm it
 
 ## 4. Time and Space Complexity
 
-A basic backtracking solver can require exponential time in the worst case. If there are m empty cells, 
-a simple upper bound for the search is O(9^m), because each empty cell can have up to nine candidate values. 
-This bound does not account for pruning invalid choices.
 
-The board uses O(1) space for a fixed 9x9 Sudoku. The recursive search can use O(m) additional stack space, 
-where m is the number of empty cells.
+Algorithm X is a recursive search algorithm with potentially exponential worst-case running time. 
+Its practical performance depends on the structure of the exact-cover problem and the choices made during the search.
 
-I plan to investigate how validity checks and different cell-selection strategies affect practical running time.
+For a standard 9x9 Sudoku, the exact-cover representation contains 324 constraints and up to 729 candidate placements.
+Dancing Links is designed to make removing and restoring matrix entries efficient. 
+I plan to investigate the algorithm's complexity in more detail and measure its performance using Sudoku puzzles of different difficulty levels.
+
+The space requirements will include the exact-cover data structure and the recursive search stack.
+
 
 ## 5. Testing
 
@@ -56,11 +60,17 @@ Testing will be performed using Python's unittest framework or another suitable 
 
 ## 6. Sources
 
-I plan to consult the Algorithms and AI Lab course materials, Python documentation and educational resources 
-about recursive backtracking and Sudoku-solving algorithms.
 
-Specific references will be added as I use them. Any external code or AI assistance will be documented according 
-to the course requirements. The implementation code will be written by me.
+Knuth, Donald E. (2000). Dancing Links.
+
+https://arxiv.org/abs/cs/0011047
+
+I will use this paper as the primary reference for studying Algorithm X and the Dancing Links technique.
+Additional references, including Python documentation and course materials, will be documented as they are used.
+
+AI assistance: ChatGPT was used to help plan the project, understand the proposed algorithms and draft the initial documentation. 
+All implementation code will be written by me.
+
 
 ## 7. Project Information
 
