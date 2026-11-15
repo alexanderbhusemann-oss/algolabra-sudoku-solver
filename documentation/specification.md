@@ -69,7 +69,6 @@ I will use this paper as the primary reference for studying Algorithm X and the 
 Additional references, including Python documentation and course materials, will be documented as they are used.
 
 AI assistance: ChatGPT was used to help plan the project, understand the proposed algorithms and draft the initial documentation. 
-All implementation code will be written by me.
 
 
 ## 7. Project Information
